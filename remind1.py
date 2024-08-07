@@ -6,7 +6,9 @@ import datetime
 import time
 
 
+
 def set():
+    global t
     rem=sd.askstring("Время напоминания","Введите время напоминания в формате ЧЧ:ММ(в 24 часоввом формате)")
     if rem:
         try:
@@ -24,6 +26,17 @@ def set():
             mb.showerror("Ошибка",f"Произошла ошибка : {e}")
 
 
+def check():
+    global t
+    if t:
+        now=time.time()
+        if now>=t:
+            play_snd()
+            t=0
+    window.after(10000)
+
+
+t=0
 
 window=Tk()
 window.title("Напоминание")
