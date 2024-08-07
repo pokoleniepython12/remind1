@@ -33,7 +33,13 @@ def check():
         if now>=t:
             play_snd()
             t=0
-    window.after(10000)
+    window.after(10000,check)
+
+def play_snd():
+    pygame.mixer.init()
+    pygame.mixer.music.load("reminder.mp3")
+    pygame.mixer.music.play()
+
 
 
 t=0
@@ -47,5 +53,7 @@ label.pack(pady=15)
 set_button=Button(text="Установить",command=set)
 set_button.pack(pady=15)
 
+
+check()
 window.mainloop()
 
